@@ -2,6 +2,7 @@
 """Test BaseModel Class"""
 
 from datetime import datetime
+from time import sleep
 from models.base_model import BaseModel
 import unittest
 
@@ -45,6 +46,23 @@ class TestBaseModel(unittest.TestCase):
         """
         b = BaseModel()
         self.assertTrue(type(b.updated_at) is datetime)
+
+    def test_args_unused(self):
+        """
+        Checks that the attribute 'args' is not used.
+        """
+        b = BaseModel(None)
+        self.assertNotIn(None, b.__dict__.values())
+
+    def test_two_models_different_created_at(self):
+        """
+        Checks that the attribute 'created_at' of 2 models are different
+        """
+        b1 = BaseModel()
+        sleep(0.02)
+        b2 = BaseModel()
+        sleep(0.02)
+        self.assertLess(b1.created_at, b2.created_at)
 
 if __name__ == '__main__':
     unittest.main()
