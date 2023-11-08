@@ -1,10 +1,12 @@
 #!/usr/bin/python3
 
 import json
+from models.base_model import BaseModel
 
+classes = {"BaseModel": BaseModel}
 
 class FileStorage:
-    __file_path = ""
+    __file_path = "file.json"
     __objects = {}
 
     def all(self):
@@ -25,12 +27,10 @@ class FileStorage:
         try:
             with open(self.__file_path, mode="r") as f:
                 jo = json.load(f)
-                for obj in jo.values():
-                    cls_name = obj["__class__"]
-                    del obj["__class__"]
-                    self.new(eval(cls_name)(**obj))
-        except FileNotFoundError:
-            return
+                for key in jo:
+                    self.__objects[key] = classes[jo[key]["__class__"]](**jo[key])
+        except:
+            pass
 
 
 
