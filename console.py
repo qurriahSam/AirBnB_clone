@@ -4,10 +4,10 @@ import re
 from shlex import split
 
 import models
-from models.base_model import BaseModel
 
 CLASSES = [
-    "BaseModel"
+    "BaseModel",
+    "User"
 ]
 
 def parse(arg):
