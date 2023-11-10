@@ -84,7 +84,7 @@ class HBNBCommand(cmd.Cmd):
             if len(args) != 2:
                 print("** instance id missing **")
             else:
-                key = "{}.{}".format(args[0], args[1])
+                key = f"{args[0]}.{args[1]}"
                 if key not in self.storage.all():
                     print("** no instance found **")
                 else:
@@ -103,6 +103,32 @@ class HBNBCommand(cmd.Cmd):
                     self.storage.save()
                 else:
                     print("** no instance found **")
+
+    def do_update(self, argv):
+        """Updates an instance based on the class name and id by adding or
+        updating attribute and save it to the JSON file."""
+        arg_list = check_args(argv)
+        if arg_list:
+            if len(arg_list) == 1:
+                print("** instance id missing **")
+            else:
+                instance_id = f"{arg_list[0]}.{arg_list[1]}"
+                if instance_id in self.storage.all():
+                    if len(arg_list) == 2:
+                        print("** attribute name missing **")
+                    elif len(arg_list) == 3:
+                        print("** value missing **")
+                    else:
+                        obj = self.storage.all()[instance_id]
+                        if arg_list[2] in type(obj).__dict__:
+                            v_type = type(obj.__class__.__dict__[arg_list[2]])
+                            setattr(obj, arg_list[2], v_type(arg_list[3]))
+                        else:
+                            setattr(obj, arg_list[2], arg_list[3])
+                else:
+                    print("** no instance found **")
+
+            self.storage.save()
 
 
 if __name__ == '__main__':
