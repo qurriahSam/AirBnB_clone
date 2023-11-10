@@ -66,7 +66,7 @@ class TestBaseModel(unittest.TestCase):
         b2 = BaseModel()
         sleep(0.02)
         self.assertLess(b1.created_at, b2.created_at)
-    
+
     def test_args_unused(self):
         """
         Checks that the attribute 'args' is not used.
@@ -194,7 +194,7 @@ class TestBaseModel(unittest.TestCase):
         temp_update = b.updated_at
         b.save()
         self.assertLess(temp_update, b.updated_at)
-    
+
     def test_that_save_can_update_two_or_more_times(self):
         """
         Tests that the save method updates 'updated_at' two times
@@ -269,8 +269,6 @@ class TestBaseModel(unittest.TestCase):
         """Checks that to_dict() is a dict object not equal to __dict__"""
         bm = BaseModel()
         self.assertNotEqual(bm.to_dict(), bm.__dict__)
-
-
 
 
 if __name__ == '__main__':
