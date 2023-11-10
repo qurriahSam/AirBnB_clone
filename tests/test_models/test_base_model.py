@@ -6,11 +6,11 @@ from time import sleep
 from models.base_model import BaseModel
 import unittest
 
+
 class TestBaseModel(unittest.TestCase):
     """
     The test suite for models.base_model.BaseModel
     """
-
     def test_if_BaseModel_instance_has_id(self):
         """
         Checks that instance has an id assigned on initialization
@@ -63,6 +63,7 @@ class TestBaseModel(unittest.TestCase):
         b2 = BaseModel()
         sleep(0.02)
         self.assertLess(b1.created_at, b2.created_at)
+
 
 if __name__ == '__main__':
     unittest.main()
