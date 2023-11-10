@@ -60,6 +60,10 @@ class HBNBCommand(cmd.Cmd):
     def do_quit(self, argv):
         """Exits the console"""
         return True
+    
+    def do_q(self, argv):
+        """Exits the console"""
+        return True
 
     def emptyline(self):
         """ Do nothing on empty input line """
@@ -85,6 +89,20 @@ class HBNBCommand(cmd.Cmd):
                     print("** no instance found **")
                 else:
                     print(self.storage.all()[key])
+
+    def do_destroy(self, argv):
+        """Delete a class instance based on the name and given id."""
+        arg_list = check_args(argv)
+        if arg_list:
+            if len(arg_list) == 1:
+                print("** instance id missing **")
+            else:
+                key = "{}.{}".format(*arg_list)
+                if key in self.storage.all():
+                    del self.storage.all()[key]
+                    self.storage.save()
+                else:
+                    print("** no instance found **")
 
 
 if __name__ == '__main__':
