@@ -9,11 +9,11 @@ from uuid import uuid4
 import models
 from models.base_model import BaseModel
 
+
 class TestBaseModel(unittest.TestCase):
     """
     The test suite for models.base_model.BaseModel
     """
-
     def test_if_BaseModel_instance_has_id(self):
         """
         Checks that instance has an id assigned on initialization
@@ -269,6 +269,7 @@ class TestBaseModel(unittest.TestCase):
         """Checks that to_dict() is a dict object not equal to __dict__"""
         bm = BaseModel()
         self.assertNotEqual(bm.to_dict(), bm.__dict__)
+
 
 
 
