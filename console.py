@@ -23,6 +23,7 @@ CLASSES = [
     "Review"
 ]
 
+
 def parse(arg):
     curly_braces = re.search(r"\{(.*?)\}", arg)
     brackets = re.search(r"\[(.*?)\]", arg)
@@ -41,6 +42,7 @@ def parse(arg):
         retl.append(curly_braces.group())
         return retl
 
+
 def check_args(args):
     """checks if args is valid
     Args:
@@ -57,6 +59,7 @@ def check_args(args):
     else:
         return arg_list
 
+
 class HBNBCommand(cmd.Cmd):
     """The class that implements the console
     for the AirBnB clone web application
@@ -64,16 +67,16 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb) "
     storage = models.storage
-        
+
     def do_EOF(self, argv):
         """EOF signal to exit program"""
         print("")
         return True
-    
+
     def do_quit(self, argv):
         """Exits the console"""
         return True
-    
+
     def do_q(self, argv):
         """Exits the console"""
         return True
