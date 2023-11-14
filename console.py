@@ -77,10 +77,6 @@ class HBNBCommand(cmd.Cmd):
         """Exits the console"""
         return True
 
-    def do_q(self, argv):
-        """Exits the console"""
-        return True
-
     def emptyline(self):
         """ Do nothing on empty input line """
         pass
