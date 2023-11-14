@@ -1,4 +1,5 @@
-#!usr/bin/python3
+#!/usr/bin/python3
+
 import cmd
 import re
 from shlex import split

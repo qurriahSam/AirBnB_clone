@@ -1,4 +1,4 @@
-#!usr/bin/python
+#!/usr/bin/python
 """implements the user model"""
 
 from models.base_model import BaseModel
